@@ -1,10 +1,21 @@
+import React from 'react'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-function App() {
+import Login from './components/Login'
+import AddTodo from './components/AddTodo'
+import Denied from './components/Denied'
+
+export default function App() {
   return (
-    <div className="App">
-  <h1>hello</h1>
-    </div>
-  );
+  <BrowserRouter>
+  <Routes>
+         <Route  path="/" element={<Login />} />
+      <Route  path="/denied" element={<Denied />} />
+       
+       <Route  path="/addtodo" element={<AddTodo />} />
+      
+     
+  </Routes>
+  </BrowserRouter>
+  )
 }
-
-export default App;
