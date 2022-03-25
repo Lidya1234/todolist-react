@@ -1,7 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-todoList: [],
+todoList: [
+  {
+  id: 1,
+  title: "shopping",
+  completed: false
+},
+{
+  id: 2,
+  title: "shipping",
+  completed: false
+}
+],
 logged_in: false,
 }
 
@@ -10,7 +21,12 @@ const todoSlice = createSlice({
   initialState,
   reducers: {
       ADD_TODO: (state, action) =>{
-          state.todoList.push(action.payload)  
+        const newtodo ={
+          id: Date.now(),
+          title: action.payload,
+          completed: false
+        }
+        state.todoList.push(newtodo)  
       },
       LOGGEDIN: (state, action) =>{
         state.logged_in = action.payload  

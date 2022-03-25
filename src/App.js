@@ -3,12 +3,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navigate } from "react-router";
 import { useSelector, useDispatch } from 'react-redux';
 import Login from './components/Login'
-import AddTodo from './components/AddTodo'
+import TodoApp from './components/TodoApp'
 
 import {  LOGGEDIN } from './Reducer/todoSlice'
 
 export default function App() {
-   // const [user, setUser] =useState(null);
    const { logged_in } = useSelector((state) => state.todos);
     const dispatch = useDispatch();
   return (
@@ -18,10 +17,10 @@ export default function App() {
            dispatch(LOGGEDIN({
              logged_in: true}));
          }}/>} />)}
-         {logged_in&& (
-         <Route  path="/addtodo" element={<AddTodo />} />)}
+         {logged_in && (
+         <Route  path="/todoapp" element={<TodoApp />} />)}
       
-      <Route  path="*" element={<Navigate to= {logged_in ? "/addtodo" : "/"} />} />
+      <Route  path="*" element={<Navigate to= { logged_in ? "/todoapp" : "/"} />} />
   </Routes>
   </BrowserRouter>
   )
